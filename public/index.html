@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stopwatch</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="card" role="region" aria-label="Stopwatch">
+        <div class="time" id="stopwatch">00:00:00</div>
+        <div class="controls" role="toolbar" aria-label="Stopwatch controls">
+          <button id="startBtn" class="btn primary" aria-pressed="false">Start</button>
+          <button id="stopBtn" class="btn" disabled>Stop</button>
+          <button id="resetBtn" class="btn">Reset</button>
+        </div>
+        <div class="hint">Space — start/pause • S — stop • R — reset</div>
+      </section>
+    </main>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
