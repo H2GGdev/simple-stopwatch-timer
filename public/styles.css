@@ -1,13 +1,61 @@
 :root{
-	/* Discord-inspired dark gray + purplish (blurple) */
-	--bg-1: #0f1720; /* page background */
-	--bg-2: #111214; /* subtle second layer */
-	--card: #2f3136; /* card / panel */
-	--muted: #b9bbbe; /* muted text */
-	--text: #dcddde; /* primary text */
-	--accent: #5865f2; /* Discord blurple */
-	--accent-2: #7c5cff; /* lighter purplish */
+	--bg-1: #0f1720;
+	--bg-2: #111214;
+	--card: #2f3136;
+	--muted: #b9bbbe;
+	--text: #dcddde;
+	--accent: #5865f2;
+	--accent-2: #7c5cff;
 	--glass: rgba(255,255,255,0.03);
+}
+
+[data-theme="light"]{
+	--bg-1: #f6f7fb;
+	--bg-2: #e6ebff;
+	--card: #ffffff;
+	--muted: #6b7280;
+	--text: #0f1720;
+	--accent: #5b6bff;
+	--accent-2: #7a5cff;
+}
+
+[data-theme="light"] body{
+	background: radial-gradient(900px 400px at 10% 10%, rgba(91,107,255,0.06), transparent),
+							radial-gradient(700px 300px at 90% 90%, rgba(122,92,255,0.03), transparent),
+							linear-gradient(180deg,var(--bg-1),var(--bg-2));
+}
+
+[data-theme="light"] .time .cs{
+	color: rgba(15,23,32,0.56);
+}
+
+html,body,.card,.time,.btn{
+	transition: background-color 360ms cubic-bezier(.2,.9,.2,1), color 360ms cubic-bezier(.2,.9,.2,1), box-shadow 360ms ease, transform 360ms ease;
+}
+
+@keyframes themeFlash {
+	0% { transform: scale(.995); filter: brightness(.98); }
+	50% { transform: scale(1.004); filter: brightness(1.02); }
+	100% { transform: scale(1); filter: none; }
+}
+
+.theme-flash .card{ animation: themeFlash 420ms ease; }
+
+.theme-toggle{
+	display:inline-grid; place-items:center; width:40px; height:36px; font-size:16px;
+}
+
+.theme-toggle[aria-pressed="true"]{ transform: rotate(20deg) scale(.98); }
+.theme-toggle:hover{ transform: translateY(-3px) rotate(6deg); }
+
+.theme-toggle{
+	display:inline-flex;
+	align-items:center;
+	justify-content:center;
+	line-height:1;
+	padding:0;
+	font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Symbol", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+	font-size:16px;
 }
 
 *{box-sizing:border-box}
@@ -47,19 +95,17 @@ body{
 	color:var(--text);
 	line-height:1;
 	text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-	/* use tabular numbers so digits keep a consistent width and don't shift */
 	font-variant-numeric: tabular-nums;
 	-moz-font-feature-settings: "tnum" 1;
 	-webkit-font-feature-settings: "tnum" 1;
 	font-feature-settings: "tnum" 1;
 }
 
-/* centiseconds styling: smaller and slightly transparent to de-emphasize */
 .time .cs{
-  font-size:0.56em; /* slightly smaller */
-  margin-left:6px; /* tiny separation from seconds */
-  color: rgba(220,221,222,0.62); /* lighter / more transparent */
-  font-variant-numeric: tabular-nums; /* ensure digits are fixed width too */
+  font-size:0.56em;
+  margin-left:6px;
+  color: rgba(220,221,222,0.62);
+  font-variant-numeric: tabular-nums;
   vertical-align:baseline;
 }
 
@@ -101,5 +147,4 @@ body{
 	.time{font-size:48px}
 }
 
-/* focus styles */
 .btn:focus{outline:3px solid rgba(88,101,242,0.12);outline-offset:3px}

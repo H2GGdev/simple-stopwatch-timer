@@ -3,6 +3,7 @@
 A small, static stopwatch web app with a minimal, Discord-inspired (blurple) UI.
 
 Features
+- Theme button
 - HH:MM:SS.CS display (centiseconds)
 - Start / Pause, Stop, Reset controls
 - Keyboard shortcuts: Space (start/pause), S (stop), R (reset)
